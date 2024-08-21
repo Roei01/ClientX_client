@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const ClientsScreen = () => {
+const TasksScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Clients</Text>
-      {/* תוכן של דף הלקוחות */}
+      <Text style={styles.title}>Tasks</Text>
+      {/* תוכן של דף המשימות */}
     </View>
   );
 };
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ClientsScreen;
+export default TasksScreen;

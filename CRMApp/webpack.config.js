@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development', // אפשר גם 'production'
@@ -26,8 +27,8 @@ module.exports = {
               '@babel/preset-env',
               '@babel/preset-react',
               '@babel/preset-typescript'
-            ]
-          }
+            ],
+          },
         },
       },
       {
@@ -35,7 +36,10 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: {},
+            options: {
+              name: '[name].[hash].[ext]', // שמירה של הקובץ עם שם מקורי והוספת hash
+              outputPath: 'images', // שמירת קבצי תמונה בתיקייה ייעודית ב-dist
+            },
           },
         ],
       },
@@ -45,6 +49,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
       filename: 'index.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
     }),
   ],
   devServer: {
